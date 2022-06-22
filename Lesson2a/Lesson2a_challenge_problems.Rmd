@@ -11,8 +11,9 @@ Reassign the object to a new object called age (e.g., correct the typo)
 Calculate your age in days (ignore leap years) age * 365
 
 ```{r}
-# your code here ...
-
+agge <- 25
+age <- agge
+age * 365
 ```
 
 
@@ -20,9 +21,9 @@ Calculate your age in days (ignore leap years) age * 365
 For the code chunk below, what is the value of each item at each step?
 
 ```{r}
-mass <- 47.5            
-width  <- 122         
-mass <- mass * 2.0  
-width  <- width - 20
-mass_index <- mass/width 
+mass <- 47.5 # mass is 47.5 
+width  <- 122 # width is 122         
+mass <- mass * 2.0 # mass is 95 
+width  <- width - 20 # width is 102
+mass_index <- mass/width # mass index is 0.931 
 ```
