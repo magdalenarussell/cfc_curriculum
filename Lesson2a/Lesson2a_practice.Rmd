@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2 practice"
+title: "Lesson 2a practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
@@ -30,26 +30,4 @@ fav_color <- "green"
 ```{r}
 # add your code here...
 
-
-```
-
-##### If today is Tuesday, STOP HERE ######
-
-
-
-# Part b: Using pre-made functions
-
-## Instructions:
-
-## Copy your code chunk from above and integrate at least three types of functions
-      * e.g. for numeric: abs(), ceiling(), floor(), log(), sqrt(), exp()
-      * e.g. for strings: toupper(), tolower(), grep(), substr()
-
-## Note: don't be afraid to use the `?` operator and google!
-These are key parts of coding. :)
-
-```{r}
-upper_color <- toupper(fav_color)
-first_initial <- substr(myname, 1, 1)
-rounded_up_height <- ceiling(height_ft)
 ```
