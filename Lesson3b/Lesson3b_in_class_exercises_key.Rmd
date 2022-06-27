@@ -1,0 +1,136 @@
+---
+title: "Lesson 3b In-class exercises"
+author: "Magdalena Russell"
+date: '2022-06-15'
+output: html_document
+---
+
+__Under each heading below, type your code and run it. Feel free to add notes and comments to help you learn.__ 
+
+# assign vector: 4 ages (50, 55, 60, 65)
+
+```{r}
+# run this code chunk
+ages <- c(50, 55, 60, 65)
+
+```
+
+# extracts values which meet condition
+
+```{r}
+ages[ages > 60] # run me!
+
+```
+
+What was the result?
+A vector containing only 65
+
+# extracts values numerically equivalent values
+
+```{r}
+ages[ages == 60] #run me!
+
+```
+
+What was the result?
+A vector containing only 60
+
+# ages less than 50 OR greater than 60
+
+```{r}
+ages[ages < 50 | ages > 60]
+```
+
+What was the result?
+A vector containing 60
+
+# ages greater than 50 AND less than 60
+
+```{r}
+ages[ages > 50 & ages < 60]
+```
+
+What was the result?
+A vector containing only 55
+
+# recall: extract values which meet condition
+
+```{r}
+ages[ages > 60] 
+
+```
+
+
+# negate and return the opposite
+
+```{r}
+ages[!(ages > 60)]
+```
+
+What was the result?
+A vector containing 50 and 55
+
+
+# create a vector with missing data
+
+```{r}
+heights <- c(2, 4, 4, NA, 6) # run me!
+
+```
+
+# calculate mean and max on vector with missing data
+
+```{r}
+mean(heights)
+```
+
+```{r}
+max(heights)
+```
+
+# add argument to remove NA
+
+```{r}
+mean(heights, na.rm = TRUE)
+```
+
+What is the result now?
+The actual mean/max
+
+# identify elements which are missing data
+
+```{r}
+is.na(heights)
+```
+
+# reverse the TRUE/FALSE
+
+# insert here, use the NOT logical operator
+
+```{r}
+!(is.na(heights))
+```
+
+# extract elements which are not missing values (not NAs)
+
+```{r}
+heights[!(is.na(heights))]
+```
+
+# assign to a new object
+
+```{r}
+heights_without_NA = heights[!(is.na(heights))] 
+
+```
+
+# see if mean can be calculated normally now
+
+```{r}
+#run me
+mean(heights_without_NA)
+```
+
+What is the result? 
+
+
