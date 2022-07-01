@@ -1,0 +1,50 @@
+---
+title: "Lesson 5a Challenge problems"
+author: "Magdalena Russell"
+date: '2022-06-15'
+output: html_document
+---
+
+All exercises use the clinical object we created in the readings:
+
+```{r}
+# install.packages("tidyverse")
+library(tidyverse) ## if this isn't working, be sure to run the above (uncomment first)
+
+# Load the data
+clinical <- read.csv("data/clinical.csv")
+```
+
+Create a new object from clinical called demographics_BLCA that includes only the height, bmi, gender, ethnicity, and race.
+
+```{r}
+demographics_BLCA <- select(clinical, height, bmi, gender, ethnicity, race)
+```
+
+Code as many ways to select the columns year_of_diagnosis, paper_Tobacco.smoking.history, pack_years_smoked, cigarettes_per_day from the clinical object
+
+```{r}
+clinical %>% 
+  select(year_of_diagnosis, Tobacco.smoking.history, pack_years_smoked, cigarettes_per_day)
+
+clinical %>% 
+  select(year_of_diagnosis:cigarettes_per_day)
+
+clinical %>% 
+  select(c(9,10,11,12))
+
+clinical %>% 
+  select(9:12)
+
+clinical[ , 9:12]
+clinical[ , c(9,10,11,12)]
+clinical[c("year_of_diagnosis", "Tobacco.smoking.history", "pack_years_smoked", "cigarettes_per_day")]
+```
+
+Create a new object from clinical called demographics_BLCA_current_smokers that includes only the height, bmi, gender, ethnicity, and race. However, restrict data such that only current smokers are included (hint: relevant column is called Tobacco.smoking.history).
+
+```{r}
+demographics_BLCA_current_smokers <- select(filter(clinical, Tobacco.smoking.history == "Current smoker"), height, bmi, gender, ethnicity, race)
+```
+
+
