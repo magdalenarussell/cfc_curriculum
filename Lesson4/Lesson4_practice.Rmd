@@ -16,7 +16,7 @@ dir.create("data") # run me!
 # download data from url
 
 ```{r}
-download.file("https://raw.githubusercontent.com/magdalenarussell/cfc_curriculum/main/data/intro_r_teaching_dataset.csv", "data/clinical.csv") # run me!
+download.file("https://raw.githubusercontent.com/magdalenarussell/cfc_curriculum/main/data/clinical.csv", "data/clinical.csv") # run me!
 ```
 
 # import data and assign to object

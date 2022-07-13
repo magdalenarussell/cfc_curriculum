@@ -15,7 +15,7 @@ If you have not already downloaded the dataset from the "Lesson4_practice.Rmd" n
 
 ```{r}
 dir.create("data") 
-download.file("https://raw.githubusercontent.com/magdalenarussell/cfc_curriculum/main/data/intro_r_teaching_dataset.csv", "data/clinical.csv") # run me!
+download.file("https://raw.githubusercontent.com/magdalenarussell/cfc_curriculum/main/data/clinical.csv", "data/clinical.csv") # run me!
 
 clinical <- read.csv("data/clinical.csv")      
 ```
