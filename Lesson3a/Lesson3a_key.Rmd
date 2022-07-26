@@ -1,67 +1,157 @@
 ---
-title: "Lesson 3a In-class exercises"
+title: "Lesson 3a Practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
 ---
 
-# Data: Effect of vitamin C on odontoblast growth in guinea pig teet
+__Under each heading below, type your code and run it. Feel free to add notes and comments to help you learn.__ 
 
-Scientists treated guinea pigs with low or high dose vitamin C (via orange juice) for a set period of time and then measured the odontoblast (cells responsible for repairing/maintaing the dentin in your tooth) length (in picometeres)
-
-Source: Crampton, E. W. (1947). The growth of the odontoblast of the incisor teeth as a criterion of vitamin C intake of the guinea pig. The Journal of Nutrition, 33(5), 491â€“504. doi: 10.1093/jn/33.5.491.
-
-# Just run this portion to load the data
-This code chunk will create the datasets we will be using for these problems (no need to understand this code at this point in the course)
+# assign vector: 4 ages (50, 55, 60, 65)
 
 ```{r}
-# run me
-TG = ToothGrowth
-low_dose = TG[which(TG$supp == "OJ" & TG$dose == 1), "len"]
-high_dose = TG[which(TG$supp == "OJ" & TG$dose == 2), "len"]
+ages <- c(50, 55, 60, 65) 
+
+```
+
+# recall vector
+
+```{r}
+ages
+
+```
+
+What was returned?
+A vector containing the ages 50, 55, 60, and 65
+
+# how many things are in object?
+
+```{r}
+length(ages)
 
 ```
 
 
-# Practicing vector operations and functions
-
-## Instructions:
-Work in your small groups and complete the following:
-
-* Use the functions we've learned so far to determine the following about the `low_dose` and `high_dose` vectors:
-    * Do both high and lose dose sets have the same length and class?
-    * What is the mean and median of both groups?
-    * What is the third animal in the low dose group?
-    * What is the last animal in the high dose group?
-    * Save the first through fifth animal in the low dose group to a new variable called `low_dose_subset`
-    * What is the mean of the `low_dose_subset`? Is it higher or lower than the mean of the entire low dose group?
+# what type of object?
 
 ```{r}
-# determine length and class of each dataset
-length(low_dose)
-length(high_dose)
+class(ages)
 
-class(low_dose)
-class(high_dose)
-
-# determine mean and median of both groups
-mean(low_dose)
-mean(high_dose)
-
-median(low_dose)
-median(high_does)
-
-# get third animal of low dose group
-low_dose[3]
-
-# get last animal of high dose group
-high_dose[length(high_dose)]
-
-# save the first through fifth animal of low dose group to new variable
-low_dose_subset <- low_dose[1:5]
-
-# mean of new group
-mean(low_dose_subset)
 ```
 
-Feel free to add additional code chunks if that is helpful.
+# get overview of object
+
+```{r}
+str(ages)
+
+```
+
+
+# performing functions on vectors
+
+# calculate the mean or average
+
+```{r}
+mean(ages)
+
+```
+
+# get the minimum and maximum
+
+```{r}
+min(ages)
+max(ages)
+
+```
+
+# create a vector of three body parts called `organs` 
+
+```{r}
+organs <- c("lungs", "heart", "brain")
+
+```
+
+# add a value to end of the vector called `organs`
+
+```{r}
+organs <- c(organs, "kidney")
+
+```
+
+# recall vector
+
+```{r}
+#run this code chunk
+organs
+
+```
+
+What was returned?
+A vector containing the four organs: lungs, heart, brain, kidney (in that order)
+
+
+# add value at the beginning
+
+```{r}
+organs <- c("liver", organs)
+
+```
+
+# recall vector
+
+```{r}
+#run this code chunk
+organs
+
+```
+
+What was returned?
+A vector containing the five organs: liver, lungs, heart, brain, kidney (in that order)
+
+
+# extracting second value
+
+```{r}
+organs[2]
+
+```
+
+# excluding second value
+
+```{r}
+organs[-2]
+
+```
+
+# separating numbers with commas does not work
+
+```{r}
+organs[2, 3]
+
+```
+
+# extracting first and third values
+
+```{r}
+organs[c(1, 3)]
+
+```
+
+# recall vector
+
+```{r}
+#run this code chunk
+organs
+
+```
+
+What was returned?
+The same vector as before (no changes)
+
+
+# extracting the first 2 values:
+
+```{r}
+organs[1:2]
+
+```

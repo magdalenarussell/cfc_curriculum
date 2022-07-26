@@ -5,40 +5,153 @@ date: '2022-06-15'
 output: html_document
 ---
 
-# Data: Effect of vitamin C on odontoblast growth in guinea pig teet
+__Under each heading below, type your code and run it. Feel free to add notes and comments to help you learn.__ 
 
-Scientists treated guinea pigs with low or high dose vitamin C (via orange juice) for a set period of time and then measured the odontoblast (cells responsible for repairing/maintaing the dentin in your tooth) length (in picometeres)
-
-Source: Crampton, E. W. (1947). The growth of the odontoblast of the incisor teeth as a criterion of vitamin C intake of the guinea pig. The Journal of Nutrition, 33(5), 491â€“504. doi: 10.1093/jn/33.5.491.
-
-# Just run this portion to load the data
-This code chunk will create the datasets we will be using for these problems (no need to understand this code at this point in the course)
+# assign vector: 4 ages (50, 55, 60, 65)
 
 ```{r}
-# run me
-TG = ToothGrowth
-low_dose = TG[which(TG$supp == "OJ" & TG$dose == 1), "len"]
-high_dose = TG[which(TG$supp == "OJ" & TG$dose == 2), "len"]
+ages <- #fill me in
+
+```
+
+# recall vector
+
+```{r}
+ages
+
+```
+
+What was returned?
+
+
+# how many things are in object?
+
+```{r}
+## [add result here]
 
 ```
 
 
-# Practicing vector operations and functions
-
-## Instructions:
-Work in your small groups and complete the following:
-
-* Use the functions we've learned so far to determine the following about the `low_dose` and `high_dose` vectors:
-    * Do both high and lose dose sets have the same length and class?
-    * What is the mean and median of both groups?
-    * What is the third animal in the low dose group?
-    * What is the last animal in the high dose group?
-    * Save the first through fifth animal in the low dose group to a new variable called `low_dose_subset`
-    * What is the mean of the `low_dose_subset`? Is it higher or lower than the mean of the entire low dose group?
+# what type of object?
 
 ```{r}
-# add your code here
+## [add result here]
 
 ```
 
-Feel free to add additional code chunks if that is helpful.
+# get overview of object
+
+```{r}
+## [add result here]
+
+```
+
+
+# performing functions on vectors
+
+# calculate the mean or average
+
+```{r}
+## [add result here]
+
+```
+
+# get the minimum and maximum
+
+```{r}
+## [add result here] 
+
+```
+
+# create a vector of three body parts called `organs` 
+
+```{r}
+## [create vector here]
+
+```
+
+# add a value to end of the vector called `organs`
+
+```{r}
+## [add a value to the end of the vector here]
+
+```
+
+# recall vector
+
+```{r}
+#run this code chunk
+organs
+
+```
+
+What was returned?
+
+
+
+# add value at the beginning
+
+```{r}
+## [add value to the beginning of the vector here]
+
+```
+
+# recall vector
+
+```{r}
+#run this code chunk
+organs
+
+```
+
+What was returned?
+
+
+
+# extracting second value
+
+```{r}
+## [add code here]
+
+```
+
+# excluding second value
+
+```{r}
+## [add code here]
+
+```
+
+# separating numbers with commas does not work
+
+```{r}
+## [add code to produce error message here]
+
+```
+
+# extracting first and third values
+
+```{r}
+## [add code here]
+
+```
+
+# recall vector
+
+```{r}
+#run this code chunk
+organs
+
+```
+
+What was returned?
+
+
+
+# extracting the first 2 values:
+
+```{r}
+## [add code here]
+
+```
+
