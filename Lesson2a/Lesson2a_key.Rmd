@@ -1,26 +1,76 @@
 ---
-title: "Lesson 2a practice"
+title: "Lesson 2 practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
 ---
 
-# Part a: Practicing variables and math operations
+__Under each heading below, type your code and run it. Feel free to add notes and comments to help you learn.__ 
 
-## Instructions:
+__We recommend typing out the code over copying and pasting as figuring out where you made mistakes is a normal and key part of coding! Talk to an instructor if you get stuck. :)__
 
-## Write a code chunk to introduce yourself to those in the breakout room
-      * use a combo of character, numeric, integer, and logical data types
-      * feel free to be creative!
-      * use math operations (e.g. * or -) to modify your integer or numeric variables
-      * declare a variable and reassign later in your script
-      * try to assign at least 5 variables
 
-## Example:
+
+# Basic math (type below this line)
 
 ```{r}
-myname <- "maggie"
-fav_color <- false
-height_ft <- 5 + 8/12
-fav_color <- "green"
+# This is a code chunk!
+4 + 5
+
 ```
+
+What is the answer? (be sure to run your code chunk) 
+9
+
+# Assigning value to an object
+
+```{r}
+weight_kg <- 10
+
+```
+
+# Recall object
+
+```{r}
+weight_kg
+
+```
+
+What was returned when you ran the previous code chunk?
+10! The value I assigned previously
+
+
+# Multiplication on an object (convert kg to lb)
+
+```{r}
+weight_kg * 2.2
+
+```
+
+# Assign weight conversion to object
+
+```{r}
+weight_lb <- weight_kg * 2.2 
+
+```
+
+
+# Reassign new value to an object
+
+```{r}
+weight_kg <- 100 
+
+
+```
+
+# Now, recall the `weight_kg` object
+
+```{r}
+weight_kg
+
+```
+
+What value was returned when you ran the above code chunk?
+
+100! The original value was overwritten by the new value 
+
