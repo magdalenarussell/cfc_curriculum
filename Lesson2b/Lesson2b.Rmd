@@ -1,5 +1,5 @@
 ---
-title: "Lesson 2b In-class exercises"
+title: "Lesson 2b Practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
