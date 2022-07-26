@@ -1,106 +1,63 @@
 ---
-title: "Lesson 5b In-class exercises"
+title: "Lesson 5b Practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
 ---
 
-# Data: The Cancer Genome Atlas (TCGA) bladder cancer sequencing and patient characteristics
-
-## Import packages
+# load library/package (REQUIRED for RStudio cloud users)
 
 ```{r}
-# install.packages("tidyverse")
-library(tidyverse) ## if this isn't working, be sure to run the above (uncomment first)
+# run me
+library(tidyverse)
 ```
 
-
-## Load the data
+# import data (same as yesterday!)
 
 ```{r}
+# run me
 clinical <- read.csv("data/clinical.csv")
-
-# this is the selection procedure you used yesterday to select a subset of the columns
-RB1_clinical <- select(clinical,
-                       tissue_or_organ_of_origin:total.number.Indels,
-                       contains("RB1"))
 ```
 
-# Part I: Piping practice
-
-## Instructions:
-
-Use the pipe operator (%>%) to combine the following three selecting/filtering steps:
-    * Filter RB1_clinical for just the "Primary Tumor" sample types in "sample_type"
-    * Filter RB1_clinical for patients who have either “Del” or “Loss” in “focal.deletion.in.RB1” OR “yes” in "mutation.in.RB1". Hint: We can use the “|” operator for OR. You'll need a total of three expressions in your filtering step.
-using the the form:
-
-my_dataframe %>%
-   function(inputs) %>%
-   function(inputs)
+# yesterday we used nested commands to execute multiple commands at once 
 
 ```{r}
-RB1_clinical %>%
-  filter(sample_type == "Primary Tumor") %>%
-  filter(
-    focal.deletion.in.RB1 == "Del" |
-    focal.deletion.in.RB1 == "Loss" |
-    mutation.in.RB1 == "Yes"
-  )
+# select patients with Stage IV cancer, then select only the race, ethnicity, and stage columns
+race_stage <- select(filter(clinical, ajcc_pathologic_stage == "Stage IV"), race, ethnicity, ajcc_pathologic_stage)
 ```
 
-# Part II: Working with dataframes: mutate and pipe 
-
-## Instructions:
-
-Because RB1 is a tumor suppressor (when it's present, helps prevent cells from becoming cancerous), we mostly care about whether the gene is "broken" regardless of how it happened. Use pipes to do the following:
-    * First, use RB1_clinical and create a new column called "any.RB1.mut"; set it equal to the statement that you used to filter earlier (the three equals expressions. This will create a logical column for whether there's any mutation in RB1 in the cancers.
-    * Create two new dataframes: one that contains TRUEs for this new col and one that contains just FALSEs. Name them something you can remember. Hint: By "create" we just mean to assign it to a variable. You'll need to use one of the functions we learned today to limit the rows to just the ones that meet the criteria (i.e. either TRUE or FALSE)
-    * Extract the "RB1_expr" column as a vector and assign it to variable for each of your two new dataframes (created above). Hint: Review lesson 4 if you don't remember how to extract a column as a vector.
-    * Does the median expression of RB1 (RB1_expr) differ between these groups?
-    * Why might this result be, based on your knowledge of gene structure and types of cancer-relevant mutations?
+# same task as above, but with pipes
 
 ```{r}
-##  (You can ignore the content of this; it's an advanced construction)
-RB1_clinical <- RB1_clinical %>%
-  mutate(across(c(mutation.in.RB1, focal.deletion.in.RB1), #mutate these two cols
-    ~ replace_na(., "NaN") #replace the NAs with strings
-  ))
+piped <- clinical %>%
+  filter(., ajcc_pathologic_stage == "Stage IV") %>% 
+  select(., race, ethnicity, ajcc_pathologic_stage)
 ```
+
+# extract race, ethnicity, and age at diagnosis from cases born prior to 1930
 
 ```{r}
-RB1_clinical %>%
-  mutate(any.RB1.mut = focal.deletion.in.RB1 == "Del" |
-           focal.deletion.in.RB1 == "Loss" |
-           mutation.in.RB1 == "Yes")
+piped2 <- clinical %>%
+  filter(year_of_birth < 1930) %>%
+  select(race, ethnicity, age_at_diagnosis)
 
-## Cancers with an RB1_mutation
-RB1_mutants <- RB1_clinical %>%
-  mutate(any.RB1.mut = focal.deletion.in.RB1 == "Del" |
-           focal.deletion.in.RB1 == "Loss" |
-           mutation.in.RB1 == "Yes"
-  ) %>%
-  filter(any.RB1.mut == TRUE) 
-
-## "Wild type" (aka no mutation in RB1) cancers
-RB1_wildtype <- RB1_clinical %>%
-  mutate(any.RB1.mut = focal.deletion.in.RB1 == "Del" |
-           focal.deletion.in.RB1 == "Loss" |
-           mutation.in.RB1 == "Yes"
-  ) %>%
-  filter(any.RB1.mut == FALSE) 
-
-expr.RB1_mutants <- RB1_mutants$RB1_expr
-
-expr.RB1_wildtype <- RB1_wildtype$RB1_expr
-
-median(expr.RB1_mutants)
-# 3.193723
-
-median(expr.RB1_wildtype)
-# 7.829109
-
-
+piped3 <- clinical %>%
+  select(race, ethnicity, age_at_diagnosis) %>%
+  filter(year_of_birth < 1930)
 ```
 
+# convert days to years
+
+```{r}
+clinical_years <- clinical %>%
+  mutate(age_at_diagnosis_in_years = age_at_diagnosis / 365)
+```
+
+# convert days to year and months at same time, and we don't always need to assign to object
+
+```{r}
+clinical %>%
+  mutate(age_at_diagnosis_in_years = age_at_diagnosis / 365,
+         age_at_diagnosis_in_months = age_at_diagnosis / 30) 
+``` 
 

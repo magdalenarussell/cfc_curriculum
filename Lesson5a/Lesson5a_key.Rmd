@@ -1,45 +1,83 @@
 ---
-title: "Lesson 5a In-class exercises"
+title: "Lesson 5a Practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
 ---
 
-# Data: The Cancer Genome Atlas (TCGA) bladder cancer sequencing and patient characteristics
+# install package (not required for RStudio cloud users)
 
-# Part I: Working with dataframes: select and filter
-
-## Instructions:
-We’re interested in how RB1--which is best known for contributing to eye cancers--might contribute to bladder cancers. Let’s prepare the data to investigate!
-    * Select the columns "tissue_or_organ_of_origin” through "total.number.Indels" and all columns that contain “RB1”. Assign this new dataframe to the variable “RB1_clinical”. Hint: Use commas to separate multiple groupings of columns in `select()`)
-    * Filter RB1_clinical for just the "Primary Tumor" sample types in "sample_type"
-    * Filter RB1_clinical for patients who have either “Del” or “Loss” in “focal.deletion.in.RB1” OR “yes” in "mutation.in.RB1". Hint: We can use the “|” operator for OR. You'll need a total of three expressions in your filtering step.
-
-
-## Import packages
 ```{r}
-# install.packages("tidyverse")
-library(tidyverse) ## if this isn't working, be sure to run the above (uncomment first)
+# run me
+install.packages("tidyverse")
 ```
 
-## Load the data
+# load library/package (REQUIRED for RStudio cloud users)
 
 ```{r}
+# run me
+library(tidyverse)
+```
+
+# import data (same as yesterday!)
+
+```{r}
+# run me
 clinical <- read.csv("data/clinical.csv")
 ```
 
+# inspect object
+
 ```{r}
-RB1_clinical <- select(clinical,
-                       tissue_or_organ_of_origin:total.number.Indels,
-                       contains("RB1"))
-
-filter(RB1_clinical,
-       sample_type == "Primary Tumor")
-
-filter(RB1_clinical,
-  focal.deletion.in.RB1 == "Del" |
-  focal.deletion.in.RB1 == "Loss" |
-  mutation.in.RB1 == "Yes"
-)
+# run me
+str(clinical)
 ```
 
+# selecting columns with tidyverse (dplyr)
+
+```{r} 
+# pull out the following columns: clinical, tissue_or_organ_of_origin, primary_diagnosis, sample_type
+sel_columns <- select(clinical, tissue_or_organ_of_origin, primary_diagnosis, sample_type) # modify me!
+```
+
+```{r}
+# select range of columns
+sel_columns2 <- select(clinical, barcode:sample_type)  
+```
+
+```{r}
+# selecting columns with helpers
+# using starts_with()
+sel_columns3 <- select(clinical, starts_with("paper"))
+# using ends_with()
+sel_columns4 <- select(clinical, ends_with("expr"))
+# using contains()
+sel_columns5 <- select(clinical, contains("mut"))
+```
+
+## select rows conditionally
+
+```{r}
+# keep only cancer samples
+filtered_rows <- filter(clinical, sample_type == "Primary Tumor")
+# keep only patients born after 1950
+filtered_rows2 <- filter(clinical, year_of_birth > 1950)
+# keep only normal samples obtained from patients born before 1950
+filtered_rows3 <- filter(clinical, (sample_type == "Solid Tissue Normal") & (year_of_birth < 1950))
+```
+
+## multiple conditions/methods using an intermediate object
+
+```{r}
+# first only look at Stage IV patients
+stage_iv <- filter(clinical, ajcc_pathologic_stage == "Stage IV")
+# select only race, ethnicity, and stage columns
+race_stage <- select(stage_iv, race, ethnicity, ajcc_pathologic_stage)
+```
+
+## nested commands 
+
+```{r}
+# select patients with Stage IV cancer, then select only the race, ethnicity, and stage columns
+race_stage <- select(filter(clinical, ajcc_pathologic_stage == "Stage IV"), race, ethnicity, ajcc_pathologic_stage)
+```

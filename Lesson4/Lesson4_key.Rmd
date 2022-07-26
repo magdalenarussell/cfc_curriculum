@@ -1,72 +1,137 @@
 ---
-title: "Lesson 4 In-class exercises"
+title: "Lesson 4 Practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
 ---
 
-# Data: Effect of vitamin C on odontoblast growth in guinea pig teeth
-
-We are going to be working with the same dataset that we have been using the last few lessons
-
-Description: Treated guinea pigs with orange juice (OJ) in two doses or ascorbic acid (VC) in three doses or a set period of time and then measured the odontoblast (cells responsible for repairing/maintaining the dentin in your tooth) length (in picometeres)
-
-Source: Crampton, E. W. (1947). The growth of the odontoblast of the incisor teeth as a criterion of vitamin C intake of the guinea pig. The Journal of Nutrition, 33(5), 491–504. doi: 10.1093/jn/33.5.491.
+# Demo part 1: Working with dataframes!
 
 
-
-# Part 1: Familiarizing yourself with new data 
-
-## Instructions:
-
-When working with new data, it's important to familiarize yourself with its structure before performing analyses. Consult your cheatsheet/notes and perform the following:
-    * Determine the dimensions of ToothGrowth using the appropriate function
-    * View the full dataset. Are there any missing or surprising values?
-    * Extract the first 4 lines of the dataset; then extract the last 3 lines of the dataset
-    * Save the column names to a vector named "cols"
-    * Access the summary statistics for the dataset
-
-
-## Run me!
+# make a directory
 
 ```{r}
-TG <- ToothGrowth ## Access the dataset with either "TG" or "ToothGrowth"
-```
-
-```{r}
-# get dimension
-dim(TG)
-
-# View the dataset
-View(TG)
-
-# extract first 4 lines
-head(TG, n = 4)
-
-# extract last 3 lines
-tail(TG, n = 3)
-
-# save colnames
-cols <- colnames(TG)
-
-# get summary statistics
-summary(TG)
+dir.create("data") # run me!
 ```
 
 
 
-## Part II: Practicing vector operations and functions
-
-
-## Instructions:
-
-Let’s say we want to just compare the 1.0 dosage of orange juice (OJ) and ascorbic acid (VC).
-
-Use the filtering methods we learned last session (e.g. ages[ages > 50]) to isolate just the rows where the dose is 1.0 and save it to a variable called `dose1`
-Hint 1: Remember that dataframe columns are just vectors 
-Hint 2:  When working with dataframes, you need to use the form [my_filter , ] to select all columns
+# download data from url
 
 ```{r}
-dose1 <- TG[TG$dose == 1.0, ]
+download.file("https://raw.githubusercontent.com/magdalenarussell/cfc_curriculum/main/data/clinical.csv", "data/clinical.csv") # run me!
 ```
 
+
+
+# import data and assign to object
+
+```{r}
+clinical <- read.csv("data/clinical.csv")      
+```
+
+
+# view data
+
+```{r}
+View(clinical)
+```
+
+# assess size of data frame
+
+```{r}
+dim(clinical)
+```
+
+# preview first few rows
+
+```{r}
+head(clinical)
+```
+
+# show last three rows
+ 
+```{r}
+tail(clinical, n = 3)
+```
+
+# view column names
+
+```{r}
+colnames(clinical)
+```
+
+# view row names
+
+```{r}
+rownames(clinical)
+```
+
+# show overview of object
+ 
+```{r}
+str(clinical)
+```
+
+# provide summary statistics for each column
+ 
+```{r}
+summary(clinical)
+```
+
+# Demo part 2
+
+
+# extract first column and assign to a variable
+
+```{r}
+first_column <- clinical[1] 
+```
+
+# extract first column
+
+```{r}
+first_column_again <- clinical[, 1] 
+```
+
+# extract first row 
+
+```{r}
+first_row <- clinical[1, ] 
+```
+
+# extract cell from first row of first column
+
+```{r}
+single_cell <- clinical[1, 1] 
+```
+
+# extract a range of cells, rows 1 to 3, second column
+
+```{r}
+range_cells <- clinical[1:3, 2]
+```
+
+# exclude first column
+
+```{r}
+exclude_col <- clinical[, -1] 
+```
+
+# exclude first 100 rows
+
+```{r}
+exclude_range <- clinical[-c(1:100)] 
+```
+
+# extract column by name
+
+```{r}
+name_col1 <- clinical["sample_type"] 
+```
+
+# dollar sign syntax
+
+```{r}
+name_col4 <- clinical$sample_type        
+```

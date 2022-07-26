@@ -1,35 +1,25 @@
 ---
-title: "Lesson 4 In-class exercises"
+title: "Lesson 4 Practice"
 author: "Magdalena Russell"
 date: '2022-06-15'
 output: html_document
 ---
 
-# Data: Effect of vitamin C on odontoblast growth in guinea pig teeth
+# Demo part 1: Working with dataframes!
 
-We are going to be working with the same dataset that we have been using the last few lessons
-
-Description: Treated guinea pigs with orange juice (OJ) in two doses or ascorbic acid (VC) in three doses or a set period of time and then measured the odontoblast (cells responsible for repairing/maintaining the dentin in your tooth) length (in picometeres)
-
-Source: Crampton, E. W. (1947). The growth of the odontoblast of the incisor teeth as a criterion of vitamin C intake of the guinea pig. The Journal of Nutrition, 33(5), 491–504. doi: 10.1093/jn/33.5.491.
-
-
-# Part 1: Familiarizing yourself with new data 
-
-## Instructions:
-
-When working with new data, it's important to familiarize yourself with its structure before performing analyses. Consult your cheatsheet/notes and perform the following:
-    * Determine the dimensions of ToothGrowth using the appropriate function
-    * View the full dataset. Are there any missing or surprising values?
-    * Extract the first 4 lines of the dataset; then extract the last 3 lines of the dataset
-    * Save the column names to a vector named "cols"
-    * Access the summary statistics for the dataset
-
-## Run me!
+# make a directory
 
 ```{r}
-TG <- ToothGrowth ## Access the dataset with either "TG" or "ToothGrowth"
+dir.create("data") # run me!
 ```
+
+# download data from url
+
+```{r}
+download.file("https://raw.githubusercontent.com/magdalenarussell/cfc_curriculum/main/data/clinical.csv", "data/clinical.csv") # run me!
+```
+
+# import data and assign to object
 
 ```{r}
 # your code here...
@@ -37,17 +27,116 @@ TG <- ToothGrowth ## Access the dataset with either "TG" or "ToothGrowth"
 ```
 
 
-## Part II: Practicing vector operations and functions
-
-## Instructions:
-
-Let’s say we want to just compare the 1.0 dosage of orange juice (OJ) and ascorbic acid (VC).
-
-Use the filtering methods we learned last session (e.g. ages[ages > 50]) to isolate just the rows where the dose is 1.0 and save it to a variable called `dose1`
-Hint 1: Remember that dataframe columns are just vectors 
-Hint 2:  When working with dataframes, you need to use the form [my_filter , ] to select all columns
+# view data
 
 ```{r}
 # your code here...
 
+```
+
+# assess size of data frame
+
+```{r}
+# your code here...
+
+```
+
+# preview first few rows
+
+```{r}
+# your code here...
+
+```
+
+# show last three rows
+ 
+```{r}
+# your code here...
+
+```
+
+# view column names
+
+```{r}
+# your code here...
+
+```
+
+
+# view row names
+
+```{r}
+# your code here...
+
+```
+
+# show overview of object
+ 
+```{r}
+# your code here...
+
+```
+
+# provide summary statistics for each column
+ 
+```{r}
+# your code here...
+
+```
+
+# Demo part 2
+
+# extract first column and assign to a variable
+
+```{r}
+first_column <- # fill me in
+```
+
+# extract first column
+
+```{r}
+first_column_again <- # fill me in
+```
+
+# extract first row 
+
+```{r}
+first_row <- # fill me in
+```
+
+# extract cell from first row of first column
+
+```{r}
+single_cell <- # fill me in
+```
+
+# extract a range of cells, rows 1 to 3, second column
+
+```{r}
+range_cells <- # fill me in
+```
+
+# exclude first column
+
+```{r}
+exclude_col <- # fill me in 
+```
+
+# exclude first 100 rows
+
+```{r}
+exclude_range <- # fill me in 
+```
+
+# extract column by name
+
+```{r}
+name_col1 <- # fill me in
+```
+
+
+# dollar sign syntax
+
+```{r}
+name_col4 <- # fill me in
 ```
